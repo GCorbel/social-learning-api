@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users
+      resources :skills
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
