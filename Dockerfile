@@ -22,5 +22,3 @@ WORKDIR $APP_HOME
 # RUN bundle install
 
 ADD . $APP_HOME
-
-CMD npm install -g ember-cli
