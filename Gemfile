@@ -7,3 +7,4 @@ gem 'sqlite3'
 
 gem 'rspec-rails'
 gem 'factory_girl_rails'
+gem 'rack-cors', require: 'rack/cors'
