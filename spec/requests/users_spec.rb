@@ -21,4 +21,11 @@ describe "Users API" do
     json = JSON.parse(response.body)
     expect(json['users']['nickname']).to eq user.nickname
   end
+
+  it 'give information about a single user' do
+    post "/api/v1/users/", user: attributes_for(:user)
+
+    expect(response).to be_success
+    expect(User.count).to eq 1
+  end
 end
