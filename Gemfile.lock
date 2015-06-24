@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/rails-api/active_model_serializers.git
+  revision: f67fd976ecbe41305c484e4689003758e8631998
+  specs:
+    active_model_serializers (0.10.0.rc1)
+      activemodel (>= 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -37,8 +44,15 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.0)
+    bcrypt (3.1.10)
     builder (3.2.2)
+    clearance (1.10.1)
+      bcrypt
+      email_validator (~> 1.4)
+      rails (>= 3.1)
     diff-lcs (1.2.5)
+    email_validator (1.6.0)
+      activemodel
     erubis (2.7.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
@@ -124,6 +138,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers!
+  clearance
   factory_girl_rails
   rack-cors
   rails (= 4.2.2)

@@ -6,7 +6,7 @@ module Api
       end
 
       def show
-        render json: { skills: Skill.find(params[:id]) }
+        render json: { skill: { id: 2, name: 'Rails', description: 'test', users: [2] }, users: User.all }
       end
     end
   end

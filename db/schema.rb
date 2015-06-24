@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150621122614) do
+ActiveRecord::Schema.define(version: 20150624104352) do
+
+  create_table "skill_users", force: :cascade do |t|
+    t.integer "skill_id"
+    t.integer "user_id"
+  end
+
+  add_index "skill_users", ["skill_id"], name: "index_skill_users_on_skill_id"
+  add_index "skill_users", ["user_id"], name: "index_skill_users_on_user_id"
 
   create_table "skills", force: :cascade do |t|
     t.string "name"
@@ -25,6 +33,12 @@ ActiveRecord::Schema.define(version: 20150621122614) do
     t.text     "bio"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "encrypted_password", limit: 128
+    t.string   "confirmation_token", limit: 128
+    t.string   "remember_token",     limit: 128
   end
+
+  add_index "users", ["email"], name: "index_users_on_email"
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
 
 end

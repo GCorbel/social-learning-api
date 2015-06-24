@@ -8,3 +8,6 @@ gem 'sqlite3'
 gem 'rspec-rails'
 gem 'factory_girl_rails'
 gem 'rack-cors', require: 'rack/cors'
+gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
+
+gem 'clearance'

@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  match '*path', controller: 'application', action: 'handle_options_request',
+    constraints: {method: 'OPTIONS'}, via: :options
   namespace :api do
     namespace :v1 do
       resources :users
       resources :skills
+      resources :sessions
+      delete 'sessions' => 'sessions#destroy'
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

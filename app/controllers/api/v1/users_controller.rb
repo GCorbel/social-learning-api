@@ -1,6 +1,6 @@
 module Api
   module V1
-    class UsersController < ::ApplicationController
+    class UsersController < Clearance::UsersController
       def index
         render json: { users: User.all }
       end
@@ -16,7 +16,8 @@ module Api
       private
 
       def user_params
-        params.require(:user).permit!
+        params.require(:user).permit(:nickname, :email, :password,
+                                     :password_confirmation)
       end
     end
   end
