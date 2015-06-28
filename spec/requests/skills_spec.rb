@@ -32,6 +32,6 @@ describe "Skills API" do
     expect(response).to be_success
 
     json = JSON.parse(response.body)
-    expect(json['skills']['name']).to eq skill.name
+    expect(json['skill']['name']).to eq skill.name
   end
 end

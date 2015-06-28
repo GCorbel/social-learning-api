@@ -19,7 +19,7 @@ describe "Users API" do
     expect(response).to be_success
 
     json = JSON.parse(response.body)
-    expect(json['users']['nickname']).to eq user.nickname
+    expect(json['user']['nickname']).to eq user.nickname
   end
 
   it 'give information about a single user' do
