@@ -5,7 +5,7 @@ module Api
         user = authenticate(params)
         sign_in(user)
         token = Digest::SHA1.hexdigest([Time.now, rand].join)
-        render json: { token: token }
+        render json: { token: token, user_id: user.id }
       end
 
       def destroy
