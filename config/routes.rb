@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     constraints: {method: 'OPTIONS'}, via: :options
   namespace :api do
     namespace :v1 do
-      resources :users
+      resources :users do
+        put 'update_skills', on: :member
+      end
       resources :skills
       resources :sessions
       delete 'sessions' => 'sessions#destroy'
