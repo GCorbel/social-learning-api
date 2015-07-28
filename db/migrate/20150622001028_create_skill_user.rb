@@ -1,11 +1,19 @@
 class CreateSkillUser < ActiveRecord::Migration
   def change
-    create_table :skill_users do |t|
+    create_table :acquired_skills do |t|
       t.integer :skill_id
       t.integer :user_id
     end
 
-    add_index :skill_users, :skill_id
-    add_index :skill_users, :user_id
+    create_table :searched_skills do |t|
+      t.integer :skill_id
+      t.integer :user_id
+    end
+
+    add_index :acquired_skills, :skill_id
+    add_index :acquired_skills, :user_id
+
+    add_index :searched_skills, :skill_id
+    add_index :searched_skills, :user_id
   end
 end
