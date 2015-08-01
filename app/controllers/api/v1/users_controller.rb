@@ -26,6 +26,11 @@ module Api
         render json: { users: user }
       end
 
+      def matches
+        users = UserMatcher.new(user: User.find(params[:id])).call
+        render json: { users: users }
+      end
+
       private
 
       def user_params

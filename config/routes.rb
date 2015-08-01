@@ -4,8 +4,12 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users do
-        put 'update_skills', on: :member
+        member do
+          put 'update_skills'
+          get 'matches'
+        end
       end
+
       resources :skills
       resources :sessions
       delete 'sessions' => 'sessions#destroy'

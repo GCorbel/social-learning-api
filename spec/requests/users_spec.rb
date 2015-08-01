@@ -28,4 +28,21 @@ describe "Users API" do
     expect(response).to be_success
     expect(User.count).to eq 1
   end
+
+  it 'give the users that match with a user' do
+    user1 = create(:user)
+    user2 = create(:user)
+    skill1 = create(:skill)
+    skill2 = create(:skill)
+    user1.acquired_skills << skill2
+    user1.searched_skills << skill1
+    user2.acquired_skills << skill1
+    user2.searched_skills << skill2
+
+    get "/api/v1/users/#{user1.id}/matches"
+
+    expect(response).to be_success
+    expect(response.body).to include user2.to_json
+    expect(response.body).to_not include user1.to_json
+  end
 end

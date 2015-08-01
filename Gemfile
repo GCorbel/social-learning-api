@@ -8,6 +8,8 @@ group :development do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'rspec-rails'
+  gem 'pry-rails'
+  gem 'pry-byebug'
 end
 
 gem 'factory_girl_rails'
