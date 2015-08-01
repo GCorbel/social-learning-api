@@ -5,7 +5,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users do
         member do
-          put 'update_skills'
+          put 'update_acquired_skills'
+          put 'update_searched_skills'
           get 'matches'
         end
       end

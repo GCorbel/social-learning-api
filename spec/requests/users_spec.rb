@@ -29,6 +29,28 @@ describe "Users API" do
     expect(User.count).to eq 1
   end
 
+  it 'update acquired skills' do
+    user = create(:user)
+    skill = create(:skill)
+
+    put "/api/v1/users/#{user.id}/update_acquired_skills",
+      acquired_skill_ids: [skill.id]
+
+    expect(response).to be_success
+    expect(user.acquired_skills).to include skill
+  end
+
+  it 'update searched skills' do
+    user = create(:user)
+    skill = create(:skill)
+
+    put "/api/v1/users/#{user.id}/update_searched_skills",
+      searched_skill_ids: [skill.id]
+
+    expect(response).to be_success
+    expect(user.searched_skills).to include skill
+  end
+
   it 'give the users that match with a user' do
     user1 = create(:user)
     user2 = create(:user)
