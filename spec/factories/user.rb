@@ -6,5 +6,6 @@ FactoryGirl.define do
     nickname 'Dougui'
     bio "I'm a Rails developer"
     password 'test'
+    password_confirmation 'test'
   end
 end
