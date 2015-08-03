@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20150624104352) do
   create_table "acquired_skills", force: :cascade do |t|
     t.integer "skill_id"
     t.integer "user_id"
+    t.string  "description"
   end
 
   add_index "acquired_skills", ["skill_id"], name: "index_acquired_skills_on_skill_id"
@@ -24,6 +25,7 @@ ActiveRecord::Schema.define(version: 20150624104352) do
   create_table "searched_skills", force: :cascade do |t|
     t.integer "skill_id"
     t.integer "user_id"
+    t.string  "description"
   end
 
   add_index "searched_skills", ["skill_id"], name: "index_searched_skills_on_skill_id"

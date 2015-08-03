@@ -3,11 +3,13 @@ class CreateSkillUser < ActiveRecord::Migration
     create_table :acquired_skills do |t|
       t.integer :skill_id
       t.integer :user_id
+      t.string :description
     end
 
     create_table :searched_skills do |t|
       t.integer :skill_id
       t.integer :user_id
+      t.string :description
     end
 
     add_index :acquired_skills, :skill_id
