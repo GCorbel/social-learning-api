@@ -20,18 +20,6 @@ module Api
         render json: { users: user }
       end
 
-      def update_acquired_skills
-        user = User.find(params[:id])
-        user.update_attribute('acquired_skill_ids', params[:acquired_skill_ids])
-        render json: { users: user }
-      end
-
-      def update_searched_skills
-        user = User.find(params[:id])
-        user.update_attribute('searched_skill_ids', params[:searched_skill_ids])
-        render json: { users: user }
-      end
-
       def matches
         users = UserMatcher.new(user: User.find(params[:id])).call
         render json: { users: users }

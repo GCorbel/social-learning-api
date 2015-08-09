@@ -13,23 +13,15 @@
 
 ActiveRecord::Schema.define(version: 20150624104352) do
 
-  create_table "acquired_skills", force: :cascade do |t|
+  create_table "skill_users", force: :cascade do |t|
     t.integer "skill_id"
     t.integer "user_id"
     t.string  "description"
+    t.integer "kind"
   end
 
-  add_index "acquired_skills", ["skill_id"], name: "index_acquired_skills_on_skill_id"
-  add_index "acquired_skills", ["user_id"], name: "index_acquired_skills_on_user_id"
-
-  create_table "searched_skills", force: :cascade do |t|
-    t.integer "skill_id"
-    t.integer "user_id"
-    t.string  "description"
-  end
-
-  add_index "searched_skills", ["skill_id"], name: "index_searched_skills_on_skill_id"
-  add_index "searched_skills", ["user_id"], name: "index_searched_skills_on_user_id"
+  add_index "skill_users", ["skill_id"], name: "index_skill_users_on_skill_id"
+  add_index "skill_users", ["user_id"], name: "index_skill_users_on_user_id"
 
   create_table "skills", force: :cascade do |t|
     t.string "name"

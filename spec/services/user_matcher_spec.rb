@@ -7,12 +7,14 @@ describe UserMatcher do
       user2 = create(:user)
       skill1 = create(:skill)
       skill2 = create(:skill)
-      user1.acquired_skills << skill2
-      user1.searched_skills << skill1
-      user2.acquired_skills << skill1
-      user2.searched_skills << skill2
+
+      create(:skill_user, user: user1, skill: skill1, kind: SkillUser::ACQUIRED)
+      create(:skill_user, user: user1, skill: skill2, kind: SkillUser::SEARCHED)
+      create(:skill_user, user: user2, skill: skill1, kind: SkillUser::SEARCHED)
+      create(:skill_user, user: user2, skill: skill2, kind: SkillUser::ACQUIRED)
 
       matcher = UserMatcher.new(user: user1)
+
       expect(matcher.call).to eq [user2]
     end
 
@@ -20,8 +22,9 @@ describe UserMatcher do
       user1 = create(:user)
       user2 = create(:user)
       skill = create(:skill)
-      user1.searched_skills << skill
-      user2.acquired_skills << skill
+
+      create(:skill_user, user: user1, skill: skill, kind: SkillUser::SEARCHED)
+      create(:skill_user, user: user2, skill: skill, kind: SkillUser::ACQUIRED)
 
       matcher = UserMatcher.new(user: user1)
       expect(matcher.call).to eq []
@@ -31,8 +34,9 @@ describe UserMatcher do
       user1 = create(:user)
       user2 = create(:user)
       skill = create(:skill)
-      user1.acquired_skills << skill
-      user2.searched_skills << skill
+
+      create(:skill_user, user: user1, skill: skill, kind: SkillUser::ACQUIRED)
+      create(:skill_user, user: user2, skill: skill, kind: SkillUser::SEARCHED)
 
       matcher = UserMatcher.new(user: user1)
       expect(matcher.call).to eq []
