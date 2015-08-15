@@ -13,14 +13,23 @@ module Api
       end
 
       def create
-        skill_user = SkillUser.create(skill_user_parans)
-        render json: { skill_user: skill_user }
+        skill_user = SkillUser.new(skill_user_parans)
+        if skill_user.save
+          render json: { skill_user: skill_user }
+        else
+          render json: { errors: skill_user.errors },
+            status: :unprocessable_entity
+        end
       end
 
       def update
         skill_user = SkillUser.find(params[:id])
-        skill_user.update_attributes(skill_user_parans)
-        render json: { skill_user: skill_user }
+        if skill_user.update_attributes(skill_user_parans)
+          render json: { skill_user: skill_user }
+        else
+          render json: { errors: skill_user.errors },
+            status: :unprocessable_entity
+        end
       end
 
       def destroy

@@ -4,7 +4,7 @@ describe "Users API" do
   it 'sends a list of users' do
     2.times { create(:user) }
 
-    get '/api/v1/users'
+    get '/api/v1/users', format: :json
 
     expect(response).to be_success
 
@@ -23,7 +23,7 @@ describe "Users API" do
   end
 
   it 'give information about a single user' do
-    post "/api/v1/users/", user: attributes_for(:user)
+    post "/api/v1/users.json", user: attributes_for(:user)
 
     expect(response).to be_success
     expect(User.count).to eq 1

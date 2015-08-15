@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     constraints: {method: 'OPTIONS'}, via: :options
   namespace :api do
     namespace :v1 do
-      resources :users do
+      resources :users, defaults: { format: :json } do
         member do
           put 'update_acquired_skills'
           put 'update_searched_skills'

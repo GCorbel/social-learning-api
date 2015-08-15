@@ -1,6 +1,7 @@
 module Api
   module V1
     class UsersController < Clearance::UsersController
+
       def index
         render json: User.all
       end
@@ -11,13 +12,21 @@ module Api
       end
 
       def create
-        render json: { users: User.create(user_params) }
+        user = User.new(user_params)
+        if user.save
+          render json: user
+        else
+          render json: { errors: user.errors }, status: :unprocessable_entity
+        end
       end
 
       def update
         user = User.find(params[:id])
-        user.update_attributes(user_params)
-        render json: { users: user }
+        if user.update_attributes(user_params)
+          render json: { users: user }
+        else
+          render json: { errors: user.errors }, status: :unprocessable_entity
+        end
       end
 
       def matches

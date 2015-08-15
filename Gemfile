@@ -10,6 +10,7 @@ group :development do
   gem 'rspec-rails'
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'pry-remote'
 end
 
 gem 'factory_girl_rails'
