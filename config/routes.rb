@@ -16,6 +16,8 @@ Rails.application.routes.draw do
       resources :searched_skills
       resources :acquired_skills
       resources :skill_users
+      resources :trails
+      resources :messages
       delete 'sessions' => 'sessions#destroy'
     end
   end
